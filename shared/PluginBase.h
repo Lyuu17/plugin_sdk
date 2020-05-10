@@ -8,6 +8,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <string>
 #include "Base.h"
 #include "VersionsMacro.h"
 #include "GameVersion.h"
