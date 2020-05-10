@@ -14,6 +14,7 @@
 #include "CPathSplines.h"
 #include "CTrainCamNode.h"
 
+#pragma pack(push, 4)
 class CCamera : CPlaceable {
 public:
     bool m_bAboveGroundTrainNodesLoaded;
@@ -205,6 +206,7 @@ public:
     //funcs
     float Find3rdPersonQuickAimPitch();
 };
+#pragma pack(pop)
 
 extern CCamera &TheCamera;
 

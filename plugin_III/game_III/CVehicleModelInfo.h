@@ -12,6 +12,7 @@
 #include "CRGBA.h"
 #include "eHandlingIndex.h"
 
+#pragma pack(push, 4)
 class CVehicleModelInfo : public CClumpModelInfo {
 public:
     char           m_nLastPrimaryColor;
@@ -115,6 +116,7 @@ public:
     static void ShutdownEnvironmentMaps();
     ~CVehicleModelInfo();
 };
+#pragma pack(pop)
 
 VALIDATE_SIZE(CVehicleModelInfo, 0x1F8);
 

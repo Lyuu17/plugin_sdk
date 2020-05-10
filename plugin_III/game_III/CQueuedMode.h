@@ -8,6 +8,7 @@
 
 #include "PluginBase.h"
 
+#pragma pack(push, 4)
 struct CQueuedMode {
     short Mode;
     //short _pad2;
@@ -15,5 +16,6 @@ struct CQueuedMode {
     short MinZoom;
     short MaxZoom;
 };
+#pragma pack(pop)
 
 VALIDATE_SIZE(CQueuedMode, 0xC);

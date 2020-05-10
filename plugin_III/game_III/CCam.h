@@ -9,6 +9,7 @@
 #include "PluginBase.h"
 #include "CAutomobile.h"
 
+#pragma pack(push, 4)
 class CCam {
 public:
     bool m_bBelowMinDist;
@@ -97,5 +98,6 @@ public:
     int m_bFirstPersonRunAboutActive;
 
 };
+#pragma pack(pop)
 
 VALIDATE_SIZE(CCam, 0x1A4);
