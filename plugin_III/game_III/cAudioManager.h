@@ -9,6 +9,12 @@
 #include "PluginBase.h"
 #include "CVector.h"
 
+#define NUM_SOUNDS_SAMPLES_BANKS 2
+#define NUM_SOUNDS_SAMPLES_SLOTS 27
+#define NUM_SCRIPT_MAX_ENTITIES 40
+#define NUM_AUDIOENTITIES 200
+#define NUM_AUDIO_REFLECTIONS 5
+
 enum eAudioType
 {
 	AUDIOTYPE_PHYSICAL = 0x0,
@@ -48,7 +54,7 @@ struct tSound
 	unsigned int m_nIndex;
 	unsigned int m_nCurSampleIndex;
 	unsigned char field_C;
-	bool field_D;
+	char field_D;
 	char tmp0[2];
 	unsigned int field_10;
 	unsigned int m_nSampleFreq;
@@ -62,15 +68,15 @@ struct tSound
 	char tmp2[3];
 	float field_30;
 	float field_34;
-	bool field_38;
+	char field_38;
 	char tmp3[3];
 	CVector m_vecPosition;
 	bool m_bUseReverb;
-	bool field_49;
-	bool field_4A;
+	char field_49;
+	char field_4A;
 	unsigned char field_4B;
 	int field_4C;
-	bool field_50;
+	char field_50;
 	char field_51;
 	char tmp6[2];
 	int field_54;
@@ -168,60 +174,70 @@ struct cAudioCollisionManager
 };
 #pragma pack(pop)
 
+#pragma pack(push, 1)
+class cMissionAudio
+{
+public:
+	CVector m_vecPos;
+	bool m_bPredefinedProperties;
+	int m_nSampleIndex;
+	unsigned char m_nLoadingStatus;
+	unsigned char m_nPlayStatus;
+	unsigned char field_22; // todo find a name
+	int m_nMissionAudioCounter;
+	bool m_bIsPlayed;
+};
+#pragma pack(pop, 1)
+
+class cAudioScriptObjectManager
+{
+public:
+	int m_anScriptObjectEntityIndices[NUM_SCRIPT_MAX_ENTITIES];
+	int m_nScriptObjectEntityTotal;
+
+	cAudioScriptObjectManager() { m_nScriptObjectEntityTotal = 0; }
+	~cAudioScriptObjectManager() { m_nScriptObjectEntityTotal = 0; }
+};
+
 class PLUGIN_API cAudioManager {
 public:
 	bool m_bInitialised;
-	char field_1;
-	bool field_2;
+	char field_1; // unused
+	bool m_bFifthFrameFlag;
 	unsigned char m_nActiveSamples;
-	char field_4;
-	bool m_bReverb;
-	char _pad0[2];
-	float field_8;
-	bool m_bResetTimers;
-	char tmp0[3];
-	unsigned int _ResetedTimer;
-	tSound m_QueueSample;
-	unsigned char field_70;
-	char tmp1[3];
-	tSound m_aSamples[54];
-	unsigned char field_13DC[54];
-	unsigned char field_1412[2];
-	tSound m_aActiveSamples[27];
-	tAudioEntity m_aAudioEntities[200];
-	int field_1DC8[200];
-	int field_4028;
-	CVector field_402C[5];
-	float field_4068[5];
-	int m_aScriptObjectEntityIndex[40];
-	int m_nScriptObjectEntityNum;
-	cPedComments m_PedComments;
-	int m_hFire;
-	int m_hWaterCannon;
-	int m_hPoliceRadio;
-	cPoliceRadioQueue m_PoliceQueue;
-	int m_hFrontEnd;
-	int m_hCollision;
-	cAudioCollisionManager m_CollisionManager;
-	int m_hProjectile;
-	int m_hBridge;
-	CVector m_vecMissionAudioLocation;
-	bool field_4AE4;
-	char f4AE5[3];
-	unsigned int m_nMissionAudioIndex;
-	unsigned char m_nMissionAudioLoadingStatus;
-	unsigned char _bLowVolume;
-	bool field_4AEE;
-	char f4AEF[1];
-	unsigned int field_4AF0;
-	bool field_4AF4;
-	char f4AF5[3];
-	unsigned int m_aRandomTable[5];
-	unsigned char field_4B0C;
+	char field_4; // unused
+	bool m_bDynamicAcousticModelingStatus;
+	float m_fSpeedOfSound;
+	bool m_bTimerJustReset;
+	unsigned int m_nTimer;
+	tSound m_sQueueSample;
+	unsigned char m_nActiveSampleQueue;
+	tSound m_asSamples[NUM_SOUNDS_SAMPLES_BANKS][NUM_SOUNDS_SAMPLES_SLOTS];
+	unsigned char m_abSampleQueueIndexTable[NUM_SOUNDS_SAMPLES_BANKS][NUM_SOUNDS_SAMPLES_SLOTS];
+	unsigned char m_SampleRequestQueuesStatus[NUM_SOUNDS_SAMPLES_BANKS];
+	tSound m_asActiveSamples[NUM_SOUNDS_SAMPLES_SLOTS];
+	tAudioEntity m_asAudioEntities[NUM_AUDIOENTITIES];
+	int m_anAudioEntityIndices[NUM_AUDIOENTITIES];
+	int m_nAudioEntitiesTotal;
+	CVector m_avecReflectionsPos[NUM_AUDIO_REFLECTIONS];
+	float m_afReflectionsDistances[NUM_AUDIO_REFLECTIONS];
+	cAudioScriptObjectManager m_sAudioScriptObjectManager;
+	cPedComments m_sPedComments;
+	int m_nFireAudioEntity;
+	int m_nWaterCannonEntity;
+	int m_nPoliceChannelEntity;
+	cPoliceRadioQueue m_sPoliceRadioQueue;
+	int m_nFrontEndEntity;
+	int m_nCollisionEntity;
+	cAudioCollisionManager m_sCollisionManager;
+	int m_nProjectileEntity;
+	int m_nBridgeEntity;
+	cMissionAudio m_sMissionAudio;
+	int m_anRandomTable[5];
+	unsigned char m_nTimeSpent;
 	bool m_bUserPause;
-	bool m_bOldUserPause;
-	char _pad8[1];
-	unsigned int m_nJumboVolOffset;
+	bool m_bPreviousUserPause;
+	int m_FrameCounter;
 
     cAudioManager();
     ~cAudioManager();
@@ -235,7 +251,7 @@ public:
     SUPPORTED_11EN void AddSampleToRequestedQueue();
 };
 
-VALIDATE_SIZE(cAudioManager, 0x4B14);
+//VALIDATE_SIZE(cAudioManager, 0x4B14);
 
 extern cAudioManager &gAudioManager;
 
