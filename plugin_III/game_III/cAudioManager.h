@@ -7,6 +7,7 @@
 #pragma once
 
 #include "PluginBase.h"
+#include "cPoliceRadio.h"
 #include "CVector.h"
 
 #define NUM_SOUNDS_SAMPLES_BANKS 2
@@ -34,7 +35,6 @@ enum eAudioType
 	MAX_AUDIOTYPES = 0xE,
 };
 
-#pragma pack(push, 1)
 struct cVehicleParams
 {
 	unsigned char field_4;
@@ -45,9 +45,7 @@ struct cVehicleParams
 	unsigned int m_nVehicleAudioIndex;
 	float m_fSpeed;
 };
-#pragma pack(pop)
 
-#pragma pack(push, 1)
 struct tSound
 {
 	unsigned int m_AudioEntity;
@@ -83,9 +81,9 @@ struct tSound
 	unsigned char field_58;
 	char tmp7[3];
 };
-#pragma pack(pop)
 
-#pragma pack(push, 1)
+static_assert(sizeof(tSound) == 92, "tSound: error");
+
 struct tAudioEntity
 {
 	eAudioType m_AudioType;
@@ -98,9 +96,9 @@ struct tAudioEntity
 	unsigned char  field_24;
 	char _pad1[3];
 };
-#pragma pack(pop)
 
-#pragma pack(push, 1)
+static_assert(sizeof(tAudioEntity) == 40, "tAudioEntity: error");
+
 struct tPedComment
 {
 	unsigned int m_nSampleIndex;
@@ -111,9 +109,9 @@ struct tPedComment
 	unsigned char field_19;
 	char _pad0[2];
 };
-#pragma pack(pop)
 
-#pragma pack(push, 1)
+static_assert(sizeof(tPedComment) == 28, "tPedComment: error");
+
 struct cPedComments
 {
 	tPedComment arr[40];
@@ -122,31 +120,9 @@ struct cPedComments
 	unsigned char m_nBaseIndex;
 	char field_48B;
 };
-#pragma pack(pop)
 
-#pragma pack(push, 1)
-struct cAMCrime
-{
-	int m_CrimeType;
-	CVector m_vecPos;
-	short m_nSampleIndex;
-	char _pad0[2];
-};
-#pragma pack(pop)
+static_assert(sizeof(cPedComments) == 1164, "cPedComments: error");
 
-#pragma pack(push, 1)
-struct cPoliceRadioQueue
-{
-	int aSampleIndeces[60];
-	unsigned char field_F0;
-	unsigned char  field_F1;
-	unsigned char  nSample;
-	char _pad0[1];
-	cAMCrime aObjects[10];
-};
-#pragma pack(pop)
-
-#pragma pack(push, 1)
 struct cAudioCollision
 {
 	class CEntity* m_pPhysEntity;
@@ -160,9 +136,9 @@ struct cAudioCollision
 	float m_fDistance;
 	unsigned int field_24;
 };
-#pragma pack(pop)
 
-#pragma pack(push, 1)
+static_assert(sizeof(tPedComment) == 28, "tPedComment: error");
+
 struct cAudioCollisionManager
 {
 	cAudioCollision arr1[10];
@@ -172,9 +148,9 @@ struct cAudioCollisionManager
 	char _pad0[1];
 	cAudioCollision m_Queue;
 };
-#pragma pack(pop)
 
-#pragma pack(push, 1)
+static_assert(sizeof(cPedComments) == 1164, "cPedComments: error");
+
 class cMissionAudio
 {
 public:
@@ -187,7 +163,8 @@ public:
 	int m_nMissionAudioCounter;
 	bool m_bIsPlayed;
 };
-#pragma pack(pop, 1)
+
+static_assert(sizeof(cMissionAudio) == 32, "cMissionAudio: error");
 
 class cAudioScriptObjectManager
 {
