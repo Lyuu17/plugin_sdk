@@ -6,9 +6,12 @@
 */
 #include "CMatrix.h"
 
+int addrof(CMatrix::Attach) = ADDRESS_BY_VERSION(0x4B8DD0, 0x4B8EC0, 0x4B8E50);
+int gaddrof(CMatrix::Attach) = GLOBAL_ADDRESS_BY_VERSION(0x4B8DD0, 0x4B8EC0, 0x4B8E50);
+
 // Converted from thiscall void CMatrix::Attach(RwMatrixTag *rwMatrix,bool deleteOnDetach) 0x4B8DD0
 void CMatrix::Attach(RwMatrixTag* rwMatrix, bool deleteOnDetach) {
-    ((void(__thiscall *)(CMatrix*, RwMatrixTag*, bool))0x4B8DD0)(this, rwMatrix, deleteOnDetach);
+    plugin::CallMethodDynGlobal<CMatrix*, RwMatrixTag*, bool>(gaddrof(CMatrix::Attach), this, rwMatrix, deleteOnDetach);
 }
 
 // Converted from thiscall void CMatrix::AttachRW(RwMatrixTag *rwMatrix,bool deleteOnDetach) 0x4B8E00
@@ -133,7 +136,7 @@ void CMatrix::operator=(CMatrix const& right) {
 
 // Converted from thiscall void CMatrix::~CMatrix() 0x4B8DB0
 CMatrix::~CMatrix() {
-    ((void(__thiscall *)(CMatrix*))0x4B8DB0)(this);
+    ((void(__thiscall *)(CMatrix*))ADDRESS_BY_VERSION(0x4B8DB0, 0x4B8EA0, 0x4B8E30))(this);
 }
 
 // Converted from cdecl CMatrix operator*(CMatrix const&a,CMatrix const&b) 0x4B9D60
@@ -151,7 +154,7 @@ void Invert(CMatrix const& in, CMatrix&out) {
 // Converted from cdecl CMatrix Invert(CMatrix const&in) 0x4B9BF0
 CMatrix Invert(CMatrix const& in) {
     CMatrix result;
-    ((void(__cdecl *)(CMatrix*, CMatrix const&))0x4B9BF0)(&result, in);
+    ((void(__cdecl *)(CMatrix*, CMatrix const&))ADDRESS_BY_VERSION(0x4B9BF0, 0x4B9CE0, 0x4B9C70))(&result, in);
     return result;
 }
 

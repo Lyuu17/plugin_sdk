@@ -28,7 +28,7 @@ enum PLUGIN_API eMoveState {
 class CVehicle;
 
 
-class CPed : public CPhysical {
+class PLUGIN_API CPed : public CPhysical {
 protected:
     CPed(plugin::dummy_func_t) : CPhysical(plugin::dummy), m_aWeapons{ plugin::dummy, plugin::dummy,
         plugin::dummy, plugin::dummy, plugin::dummy, plugin::dummy, plugin::dummy, plugin::dummy,
@@ -264,6 +264,8 @@ public:
     
     //funcs
     CPed(unsigned int modelIndex);
+    SUPPORTED_10EN_11EN_STEAM bool IsPlayer();
+    SUPPORTED_10EN_11EN_STEAM bool UseGroundColModel();
     void SetAimFlag(CEntity* aimingTo);
     void SetAimFlag(float heading);
     void SetAttack(CEntity* entity);
@@ -298,3 +300,5 @@ extern CVector *vecPedVanRearDoorAnimOffset;
 extern CVector *vecPedTrainDoorAnimOffset;
 extern CVector *vecPedDraggedOutCarAnimOffset;
 extern CVector *vecPedQuickDraggedOutCarAnimOffset;
+
+#include "meta/meta.CPed.h"

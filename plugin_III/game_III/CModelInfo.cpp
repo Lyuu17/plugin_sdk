@@ -6,7 +6,7 @@ Do not delete this comment block. Respect others' work!
 */
 #include "CModelInfo.h"
 
-CBaseModelInfo **CModelInfo::ms_modelInfoPtrs = (CBaseModelInfo**)0x83D408;
+CBaseModelInfo **CModelInfo::ms_modelInfoPtrs = (CBaseModelInfo**)GLOBAL_ADDRESS_BY_VERSION(0x83D408, 0x83D408, 0x84D548);
 XtraCompsModelStore *CModelInfo::ms_xtraCompsModelStore = (XtraCompsModelStore*)0x940348;
 MloInstanceStore *CModelInfo::ms_mloInstanceStore = (MloInstanceStore*)0x8E2B84;
 EffectStore *CModelInfo::ms_2dEffectStore = (EffectStore*)0x9434F8;

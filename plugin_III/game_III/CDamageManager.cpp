@@ -41,9 +41,12 @@ unsigned int CDamageManager::GetPanelStatus(ePanels panel) {
     return plugin::CallMethodAndReturn<unsigned int, 0x5458E0, CDamageManager *, ePanels>(this, panel);
 }
 
+int addrof(CDamageManager::GetWheelStatus) = ADDRESS_BY_VERSION(0x545910, 0X545B10, 0X545AC0);
+int gaddrof(CDamageManager::GetWheelStatus) = GLOBAL_ADDRESS_BY_VERSION(0x545910, 0X545B10, 0X545AC0);
+
 // Converted from thiscall uint CDamageManager::GetWheelStatus(int wheel) 0x545910
 unsigned int CDamageManager::GetWheelStatus(int wheel) {
-    return plugin::CallMethodAndReturn<unsigned int, 0x545910, CDamageManager *, int>(this, wheel);
+    return plugin::CallMethodAndReturnDynGlobal<unsigned int, CDamageManager *, int>(gaddrof(CDamageManager::GetWheelStatus), this, wheel);
 }
 
 // Converted from thiscall bool CDamageManager::ProgressDoorDamage(uchar door) 0x545970 
@@ -56,9 +59,12 @@ bool CDamageManager::ProgressEngineDamage(float damage) {
     return plugin::CallMethodAndReturn<bool, 0x5459B0, CDamageManager *, float>(this, damage);
 }
 
+int addrof(CDamageManager::ProgressWheelDamage) = ADDRESS_BY_VERSION(0x545A40, 0x545C40, 0x545BF0);
+int gaddrof(CDamageManager::ProgressWheelDamage) = GLOBAL_ADDRESS_BY_VERSION(0x545A40, 0x545C40, 0x545BF0);
+
 // Converted from thiscall bool CDamageManager::ProgressWheelDamage(uchar wheel) 0x545A40
 bool CDamageManager::ProgressWheelDamage(unsigned char wheel) {
-    return plugin::CallMethodAndReturn<bool, 0x545A40, CDamageManager *, unsigned char>(this, wheel);
+    return plugin::CallMethodAndReturnDynGlobal<bool, CDamageManager *, unsigned char>(gaddrof(CDamageManager::ProgressWheelDamage), this, wheel);
 }
 
 // Converted from thiscall bool CDamageManager::ProgressPanelDamage(uchar panel) 0x545A00
@@ -76,14 +82,20 @@ void CDamageManager::SetDoorStatus(eDoors door, unsigned int status) {
     plugin::CallMethod<0x545920, CDamageManager *, eDoors, unsigned int>(this, door, status);
 }
 
+int addrof(CDamageManager::SetEngineStatus) = ADDRESS_BY_VERSION(0x545940, 0x545B40, 0x545AF0);
+int gaddrof(CDamageManager::SetEngineStatus) = GLOBAL_ADDRESS_BY_VERSION(0x545940, 0x545B40, 0x545AF0);
+
 // Converted from thiscall void CDamageManager::SetEngineStatus(uint status) 0x545940
 void CDamageManager::SetEngineStatus(unsigned int status) {
-    plugin::CallMethod<0x545940, CDamageManager *, unsigned int>(this, status);
+    plugin::CallMethodDynGlobal<CDamageManager *, unsigned int>(gaddrof(CDamageManager::SetEngineStatus), this, status);
 }
+
+int addrof(CDamageManager::SetWheelStatus) = ADDRESS_BY_VERSION(0x545900, 0x545B00, 0x545AB0);
+int gaddrof(CDamageManager::SetWheelStatus) = GLOBAL_ADDRESS_BY_VERSION(0x545900, 0x545B00, 0x545AB0);
 
 // Converted from thiscall void CDamageManager::SetWheelStatus(int wheel, uint status) 0x545900
 void CDamageManager::SetWheelStatus(int wheel, unsigned int status) {
-    plugin::CallMethod<0x545900, CDamageManager *, int, unsigned int>(this, wheel, status);
+    plugin::CallMethodDynGlobal<CDamageManager *, int, unsigned int>(gaddrof(CDamageManager::SetWheelStatus), this, wheel, status);
 }
 
 // Converted from thiscall void CDamageManager::SetLightStatus(eLights light,uint status) 0x545860

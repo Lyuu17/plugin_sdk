@@ -46,3 +46,5 @@ public:
 
 eLevelName GetCollisionInSectorList(CPtrList& list);
 eLevelName GetCollisionInSector(CSector& sector);
+
+#include "meta/meta.CCollision.h"

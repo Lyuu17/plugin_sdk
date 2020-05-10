@@ -20,6 +20,20 @@ plugin::dummy, plugin::dummy, plugin::dummy, plugin::dummy, plugin::dummy } {
     plugin::CallMethod<0x4C41C0, CPed *, unsigned int>(this, modelIndex);
 }
 
+int addrof(CPed::IsPlayer) = ADDRESS_BY_VERSION(0x4D48E0, 0x4D4980, 0x4D4910);
+int gaddrof(CPed::IsPlayer) = GLOBAL_ADDRESS_BY_VERSION(0x4D48E0, 0x4D4980, 0x4D4910);
+
+bool CPed::IsPlayer() {
+    return plugin::CallMethodAndReturnDynGlobal<bool, CPed*>(gaddrof(CPed::IsPlayer), this);
+}
+
+int addrof(CPed::UseGroundColModel) = ADDRESS_BY_VERSION(0x4CE730, 0x4CE7D0, 0x4CE760);
+int gaddrof(CPed::UseGroundColModel) = GLOBAL_ADDRESS_BY_VERSION(0x4CE730, 0x4CE7D0, 0x4CE760);
+
+bool CPed::UseGroundColModel() {
+    return plugin::CallMethodAndReturnDynGlobal<bool, CPed*>(gaddrof(CPed::UseGroundColModel), this);
+}
+
 void CPed::SetAimFlag(CEntity* aimingTo) {
     plugin::CallMethod<0x4C69E0, CPed *, CEntity*>(this, aimingTo);
 }

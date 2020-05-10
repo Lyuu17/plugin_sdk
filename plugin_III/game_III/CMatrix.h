@@ -32,7 +32,7 @@ public:
 
     CMatrix(plugin::dummy_func_t) {}
 
-    void Attach(RwMatrixTag* rwMatrix, bool deleteOnDetach);
+    SUPPORTED_10EN_11EN_STEAM void Attach(RwMatrixTag* rwMatrix, bool deleteOnDetach);
     void AttachRW(RwMatrixTag* rwMatrix, bool deleteOnDetach);
     CMatrix(CMatrix const& src);
     CMatrix(RwMatrixTag* rwMatrix, bool deleteOnDetach);
@@ -64,8 +64,10 @@ public:
 VALIDATE_SIZE(CMatrix, 0x48);
 
 void Invert(CMatrix const& in, CMatrix&out);
-CMatrix Invert(CMatrix const& in);
+SUPPORTED_10EN_11EN_STEAM CMatrix Invert(CMatrix const& in);
 CMatrix operator*(CMatrix const& a, CMatrix const& b);
 CVector operator*(CMatrix const& m, CVector const& v);
 CVector Multiply3x3(CVector const& v, CMatrix const& m);
 CVector Multiply3x3(CMatrix const& m, CVector const& v);
+
+#include "meta/meta.CMatrix.h"

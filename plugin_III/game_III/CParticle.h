@@ -14,7 +14,7 @@
 
 class CEntity;
 
-class CParticle {
+class PLUGIN_API CParticle {
 public:
     CVector        m_vecPosition;
     CVector        m_vecDirection;
@@ -46,15 +46,17 @@ private:
 public:
     CParticle *m_pNext;
 
-    static void ReloadConfig();
-    static void Initialise();
-    static void Shutdown();
+    SUPPORTED_10EN_11EN_STEAM static void ReloadConfig();
+    SUPPORTED_10EN_11EN_STEAM static void Initialise();
+    SUPPORTED_10EN_11EN_STEAM static void Shutdown();
     static CParticle* AddParticle(tParticleType type, CVector const& posn, CVector const& direction, CEntity* entity, float size, int rotationSpeed, int rotation, int currentFrame, int lifeSpan);
     static CParticle* AddParticle(tParticleType type, CVector const& posn, CVector const& direction, CEntity* entity, float size, RwRGBA const& color, int rotationSpeed, int rotation, int currentFrame, int lifeSpan);
-    static void Update();
-    static void Render();
-    static void RemovePSystem(tParticleType particleType);
-    static void RemoveParticle(CParticle* particle, CParticle* previousParticle, tParticleSystemData* particleSystem);
+    SUPPORTED_10EN_11EN_STEAM static void Update();
+    SUPPORTED_10EN_11EN_STEAM static void Render();
+    SUPPORTED_10EN_11EN_STEAM static void RemovePSystem(tParticleType particleType);
+    SUPPORTED_10EN_11EN_STEAM static void RemoveParticle(CParticle* particle, CParticle* previousParticle, tParticleSystemData* particleSystem);
     static void AddJetExplosion(CVector const& posn, float power, float size);
     static void AddYardieDoorSmoke(CVector const& posn, CMatrix const& matrix);
 };
+
+#include "meta/meta.CParticle.h"

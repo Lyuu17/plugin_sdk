@@ -125,9 +125,12 @@ bool CCollision::TestLineOfSight(CColLine const& colLine, CMatrix const& transfo
     return plugin::CallAndReturn<bool, 0x40F720, CColLine const&, CMatrix const&, CColModel&, bool>(colLine, transform, colModel, doSeeThroughCheck);
 }
 
+int addrof(CCollision::ProcessLineOfSight) = ADDRESS_BY_VERSION(0x40F910, 0x40F910, 0x40F910);
+int gaddrof(CCollision::ProcessLineOfSight) = GLOBAL_ADDRESS_BY_VERSION(0x40F910, 0x40F910, 0x40F910);
+
 // Converted from cdecl bool CCollision::ProcessLineOfSight(CColLine const& colLine,CMatrix const& transform,CColModel &colModel,CColPoint &colPoint,float &maxTouchDistance,bool doSeeThroughCheck) 0x40F910
 bool CCollision::ProcessLineOfSight(CColLine const& colLine, CMatrix const& transform, CColModel& colModel, CColPoint& colPoint, float& maxTouchDistance, bool doSeeThroughCheck) {
-    return plugin::CallAndReturn<bool, 0x40F910, CColLine const&, CMatrix const&, CColModel&, CColPoint&, float&, bool>(colLine, transform, colModel, colPoint, maxTouchDistance, doSeeThroughCheck);
+    return plugin::CallAndReturnDynGlobal<bool, CColLine const&, CMatrix const&, CColModel&, CColPoint&, float&, bool>(gaddrof(CCollision::ProcessLineOfSight), colLine, transform, colModel, colPoint, maxTouchDistance, doSeeThroughCheck);
 }
 
 // Converted from cdecl bool CCollision::ProcessVerticalLineTriangle(CColLine const& colLine,CompressedVector const* verts,CColTriangle const& tri,CColTrianglePlane const& triPlane,CColPoint &colPoint,float &maxTouchDistance,CStoredCollPoly *colPoly) 0x40FB50

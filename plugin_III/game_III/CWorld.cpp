@@ -10,16 +10,16 @@ unsigned char &CWorld::PlayerInFocus = *(unsigned char *)0x95CD61;
 CPlayerInfo *CWorld::Players = (CPlayerInfo *)0x9412F0;
 bool &CWorld::bDoingCarCollisions = *(bool *)0x95CD8C;
 bool &CWorld::bForceProcessControl = *(bool *)0x95CD6C;
-bool &CWorld::bIncludeCarTyres = *(bool *)0x95CDAA;
-bool &CWorld::bIncludeDeadPeds = *(bool *)0x95CD8F;
+bool &CWorld::bIncludeCarTyres = *(bool *)GLOBAL_ADDRESS_BY_VERSION(0x95CDAA, 0x95CF63, 0x96D0A3);
+bool &CWorld::bIncludeDeadPeds = *(bool *)GLOBAL_ADDRESS_BY_VERSION(0x95CD8F, 0x95CF47, 0x96D087);
 bool &CWorld::bNoMoreCollisionTorque = *(bool *)0x95CDCC;
 bool &CWorld::bProcessCutsceneOnly = *(bool *)0x95CD8B;
 bool &CWorld::bSecondShift = *(bool *)0x95CD54;
 CSector *CWorld::ms_aSectors = (CSector *)0x665608;
 CPtrList *CWorld::ms_bigBuildingsList = (CPtrList *)0x6FAB60;
 CPtrList *CWorld::ms_listMovingEntityPtrs = (CPtrList *)0x8F433C;
-short &CWorld::ms_nCurrentScanCode = *(short *)0x95CC64;
-CEntity *&CWorld::pIgnoreEntity = *(CEntity **)0x8F6494;
+short &CWorld::ms_nCurrentScanCode = *(short *)GLOBAL_ADDRESS_BY_VERSION(0x95CC64, 0x95CE1C, 0x96CF5C);
+CEntity *&CWorld::pIgnoreEntity = *(CEntity **)GLOBAL_ADDRESS_BY_VERSION(0x8F6494, 0x8F664C, 0x90678C);
 
 // Converted from cdecl void CWorld::Add(CEntity *entity) 0x4AE930 
 void CWorld::Add(CEntity* entity) {
@@ -46,9 +46,12 @@ void CWorld::CallOffChaseForAreaSectorListVehicles(CPtrList& list, float x1, flo
     plugin::Call<0x4B57B0, CPtrList&, float, float, float, float, float, float, float, float>(list, x1, y1, x2, y2, arg5, arg6, arg7, arg8);
 }
 
+int addrof(CWorld::CameraToIgnoreThisObject) = ADDRESS_BY_VERSION(0X4B5C30, 0X4B5D20, 0X4B5CB0);
+int gaddrof(CWorld::CameraToIgnoreThisObject) = GLOBAL_ADDRESS_BY_VERSION(0X4B5C30, 0X4B5D20, 0X4B5CB0);
+
 // Converted from cdecl bool CWorld::CameraToIgnoreThisObject(CEntity *entity) 0x4B5C30 
 bool CWorld::CameraToIgnoreThisObject(CEntity* entity) {
-    return plugin::CallAndReturn<bool, 0x4B5C30, CEntity*>(entity);
+    return plugin::CallAndReturnDynGlobal<bool, CEntity*>(gaddrof(CWorld::CameraToIgnoreThisObject), entity);
 }
 
 // Converted from cdecl void CWorld::ClearCarsFromArea(float x1,float y1,float z1,float x2,float y2,float z2) 0x4B50E0 
@@ -81,9 +84,12 @@ void CWorld::ExtinguishAllCarFiresInArea(CVector point, float radius) {
     plugin::Call<0x4B5460, CVector, float>(point, radius);
 }
 
+int addrof(CWorld::FindGroundZFor3DCoord) = ADDRESS_BY_VERSION(0x4B3AE0, 0x4B3BD0, 0x4B3B60);
+int gaddrof(CWorld::FindGroundZFor3DCoord) = GLOBAL_ADDRESS_BY_VERSION(0x4B3AE0, 0x4B3BD0, 0x4B3B60);
+
 // Converted from cdecl float CWorld::FindGroundZFor3DCoord(float x,float y,float z,bool *outResult) 0x4B3AE0
 float CWorld::FindGroundZFor3DCoord(float x, float y, float z, bool* outResult) {
-    return plugin::CallAndReturn<float, 0x4B3AE0, float, float, float, bool*>(x, y, z, outResult);
+    return plugin::CallAndReturnDynGlobal<float, float, float, float, bool*>(gaddrof(CWorld::FindGroundZFor3DCoord), x, y, z, outResult);
 }
 
 // Converted from cdecl float CWorld::FindGroundZForCoord(float x,float y) 0x4B3A80 
@@ -181,9 +187,12 @@ void CWorld::Process() {
     plugin::Call<0x4B1A60>();
 }
 
+int addrof(CWorld::ProcessLineOfSight) = ADDRESS_BY_VERSION(0x4AF970, 0x4AFA60, 0x4AF9F0);
+int gaddrof(CWorld::ProcessLineOfSight) = GLOBAL_ADDRESS_BY_VERSION(0x4AF970, 0x4AFA60, 0x4AF9F0);
+
 // Converted from cdecl bool CWorld::ProcessLineOfSight(CVector const&origin,CVector const&target,CColPoint &outColPoint,CEntity *&outEntity,bool buildings,bool vehicles,bool peds,bool objects,bool dummies,bool doSeeThroughCheck,bool doCameraIgnoreCheck) 0x4AF970
 bool CWorld::ProcessLineOfSight(CVector const& origin, CVector const& target, CColPoint& outColPoint, CEntity*& outEntity, bool buildings, bool vehicles, bool peds, bool objects, bool dummies, bool doSeeThroughCheck, bool doCameraIgnoreCheck) {
-    return plugin::CallAndReturn<bool, 0x4AF970, CVector const&, CVector const&, CColPoint&, CEntity*&, bool, bool, bool, bool, bool, bool, bool>(origin, target, outColPoint, outEntity, buildings, vehicles, peds, objects, dummies, doSeeThroughCheck, doCameraIgnoreCheck);
+    return plugin::CallAndReturnDynGlobal<bool, CVector const&, CVector const&, CColPoint&, CEntity*&, bool, bool, bool, bool, bool, bool, bool>(gaddrof(CWorld::ProcessLineOfSight), origin, target, outColPoint, outEntity, buildings, vehicles, peds, objects, dummies, doSeeThroughCheck, doCameraIgnoreCheck);
 }
 
 // Converted from cdecl bool CWorld::ProcessLineOfSightSector(CSector &sector,CColLine const&line,CColPoint &outColPoint,float &maxTouchDistance,CEntity *&outEntity,bool buildings,bool vehicles,bool peds,bool objects,bool dummies,bool doSeeThroughCheck,bool doCameraIgnoreCheck) 0x4B0A80
@@ -196,9 +205,12 @@ bool CWorld::ProcessLineOfSightSectorList(CPtrList& list, CColLine const& line, 
     return plugin::CallAndReturn<bool, 0x4B0C70, CPtrList&, CColLine const&, CColPoint&, float&, CEntity*&, bool, bool>(list, line, outColPoint, maxTouchDistance, outEntity, doSeeThroughCheck, doCameraIgnoreCheck);
 }
 
+int addrof(CWorld::ProcessVerticalLine) = ADDRESS_BY_VERSION(0x4B0DE0, 0x4B0ED0, 0x4B0E60);
+int gaddrof(CWorld::ProcessVerticalLine) = GLOBAL_ADDRESS_BY_VERSION(0x4B0DE0, 0x4B0ED0, 0x4B0E60);
+
 // Converted from cdecl bool CWorld::ProcessVerticalLine(CVector const&origin,float distance,CColPoint &outColPoint,CEntity *&outEntity,bool buildings,bool vehicles,bool peds,bool objects,bool dummies,bool doSeeThroughCheck,CStoredCollPoly *outCollPoly) 0x4B0DE0
 bool CWorld::ProcessVerticalLine(CVector const& origin, float distance, CColPoint& outColPoint, CEntity*& outEntity, bool buildings, bool vehicles, bool peds, bool objects, bool dummies, bool doSeeThroughCheck, CStoredCollPoly* outCollPoly) {
-    return plugin::CallAndReturn<bool, 0x4B0DE0, CVector const&, float, CColPoint&, CEntity*&, bool, bool, bool, bool, bool, bool, CStoredCollPoly*>(origin, distance, outColPoint, outEntity, buildings, vehicles, peds, objects, dummies, doSeeThroughCheck, outCollPoly);
+    return plugin::CallAndReturnDynGlobal<bool, CVector const&, float, CColPoint&, CEntity*&, bool, bool, bool, bool, bool, bool, CStoredCollPoly*>(gaddrof(CWorld::ProcessVerticalLine), origin, distance, outColPoint, outEntity, buildings, vehicles, peds, objects, dummies, doSeeThroughCheck, outCollPoly);
 }
 
 // Converted from cdecl bool CWorld::ProcessVerticalLineSector(CSector &sector,CColLine const&line,CColPoint &outColPoint,CEntity *&outEntity,bool buildings,bool vehicles,bool peds,bool objects,bool dummies,bool doSeeThroughCheck,CStoredCollPoly *outCollPoly) 0x4B0EF0

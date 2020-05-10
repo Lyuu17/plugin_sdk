@@ -79,7 +79,7 @@ enum eLights {
 };
 
 
-class CDamageManager {
+class PLUGIN_API CDamageManager {
 public:
      int uDamId;
      char bStates[12];
@@ -101,19 +101,21 @@ public:
      unsigned int GetEngineStatus();
      unsigned int GetLightStatus(eLights light);
      unsigned int GetPanelStatus(ePanels panel);
-     unsigned int GetWheelStatus(int wheel);
+     SUPPORTED_10EN_11EN_STEAM unsigned int GetWheelStatus(int wheel);
      bool ProgressDoorDamage(unsigned char door);
      bool ProgressEngineDamage(float damage);
-     bool ProgressWheelDamage(unsigned char wheel);
+     SUPPORTED_10EN_11EN_STEAM bool ProgressWheelDamage(unsigned char wheel);
      // Set next level of damage to panel
      bool ProgressPanelDamage(unsigned char panel);
      void ResetDamageStatus();
      void SetDoorStatus(eDoors door, unsigned int status);
      // Status is a value between 0-250
-     void SetEngineStatus(unsigned int status);
-     void SetWheelStatus(int wheel, unsigned int status);
+     SUPPORTED_10EN_11EN_STEAM void SetEngineStatus(unsigned int status);
+     SUPPORTED_10EN_11EN_STEAM void SetWheelStatus(int wheel, unsigned int status);
      void SetLightStatus(eLights light, unsigned int status);
      void SetPanelStatus(int panel, unsigned int status);
 };
 
 VALIDATE_SIZE(CDamageManager, 0x1C);
+
+#include "meta/meta.CDamageManager.h"

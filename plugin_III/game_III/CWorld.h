@@ -14,7 +14,7 @@
 #include "CColPoint.h"
 #include "CPlayerInfo.h"
 
-class CWorld {
+class PLUGIN_API CWorld {
 public:
     // static variables
     static unsigned char &PlayerInFocus;
@@ -38,14 +38,14 @@ public:
     static void CallOffChaseForArea(float x1, float y1, float x2, float y2);
     static void CallOffChaseForAreaSectorListPeds(CPtrList& list, float x1, float y1, float x2, float y2, float arg5, float arg6, float arg7, float arg8);
     static void CallOffChaseForAreaSectorListVehicles(CPtrList& list, float x1, float y1, float x2, float y2, float arg5, float arg6, float arg7, float arg8);
-    static bool CameraToIgnoreThisObject(CEntity* entity);
+    SUPPORTED_10EN_11EN_STEAM static bool CameraToIgnoreThisObject(CEntity* entity);
     static void ClearCarsFromArea(float x1, float y1, float z1, float x2, float y2, float z2);
     static void ClearExcitingStuffFromArea(CVector const& point, float radius, unsigned char bRemoveProjectilesAndShadows);
     static void ClearForRestart();
     static void ClearPedsFromArea(float x1, float y1, float z1, float x2, float y2, float z2);
     static void ClearScanCodes();
     static void ExtinguishAllCarFiresInArea(CVector point, float radius);
-    static float FindGroundZFor3DCoord(float x, float y, float z, bool* outResult);
+    SUPPORTED_10EN_11EN_STEAM static float FindGroundZFor3DCoord(float x, float y, float z, bool* outResult);
     static float FindGroundZForCoord(float x, float y);
     static void FindMissionEntitiesIntersectingCube(CVector const& cornerA, CVector const& cornerB, short* outCount, short maxCount, CEntity** outEntities, bool vehicles, bool peds, bool objects);
     static void FindMissionEntitiesIntersectingCubeSectorList(CPtrList& list, CVector const& cornerA, CVector const& cornerB, short* outCount, short maxCount, CEntity** outEntities, bool vehiclesList, bool pedsList, bool objectsList);
@@ -65,10 +65,10 @@ public:
     static bool GetIsLineOfSightSectorListClear(CPtrList& list, CColLine const& line, bool doSeeThroughCheck, bool doCameraIgnoreCheck);
     static void Initialise();
     static void Process();
-    static bool ProcessLineOfSight(CVector const& origin, CVector const& target, CColPoint& outColPoint, CEntity*& outEntity, bool buildings, bool vehicles, bool peds, bool objects, bool dummies, bool doSeeThroughCheck, bool doCameraIgnoreCheck);
+    SUPPORTED_10EN_11EN_STEAM static bool ProcessLineOfSight(CVector const& origin, CVector const& target, CColPoint& outColPoint, CEntity*& outEntity, bool buildings, bool vehicles, bool peds, bool objects, bool dummies, bool doSeeThroughCheck, bool doCameraIgnoreCheck);
     static bool ProcessLineOfSightSector(CSector& sector, CColLine const& line, CColPoint& outColPoint, float& maxTouchDistance, CEntity*& outEntity, bool buildings, bool vehicles, bool peds, bool objects, bool dummies, bool doSeeThroughCheck, bool doCameraIgnoreCheck);
     static bool ProcessLineOfSightSectorList(CPtrList& list, CColLine const& line, CColPoint& outColPoint, float& maxTouchDistance, CEntity*& outEntity, bool doSeeThroughCheck, bool doCameraIgnoreCheck);
-    static bool ProcessVerticalLine(CVector const& origin, float distance, CColPoint& outColPoint, CEntity*& outEntity, bool buildings, bool vehicles, bool peds, bool objects, bool dummies, bool doSeeThroughCheck, CStoredCollPoly* outCollPoly);
+    SUPPORTED_10EN_11EN_STEAM static bool ProcessVerticalLine(CVector const& origin, float distance, CColPoint& outColPoint, CEntity*& outEntity, bool buildings, bool vehicles, bool peds, bool objects, bool dummies, bool doSeeThroughCheck, CStoredCollPoly* outCollPoly);
     static bool ProcessVerticalLineSector(CSector& sector, CColLine const& line, CColPoint& outColPoint, CEntity*& outEntity, bool buildings, bool vehicles, bool peds, bool objects, bool dummies, bool doSeeThroughCheck, CStoredCollPoly* outCollPoly);
     static bool ProcessVerticalLineSectorList(CPtrList& list, CColLine const& line, CColPoint& outColPoint, float& maxTouchDistance, CEntity*& outEntity, bool doSeeThroughCheck, CStoredCollPoly* outCollPoly);
     static void Remove(CEntity* entity);
@@ -90,3 +90,5 @@ public:
     static void TriggerExplosionSectorList(CPtrList& list, CVector const& point, float radius, float visibleDistance, CEntity* entity, bool processVehicleBombTimer);
     static void UseDetonator(CEntity* creator);
 };
+
+#include "meta/meta.CWorld.h"
