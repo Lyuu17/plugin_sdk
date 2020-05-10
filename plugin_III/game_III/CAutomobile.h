@@ -134,6 +134,7 @@ public:
     void TankControl();
     void VehicleDamage(float damageIntensity, unsigned short arg1);
     void dmgDrawCarCollidingParticles(CVector const& position, float force);
+    bool SetUpWheelColModel(CColModel* wheelCol);
 };
 
 VALIDATE_SIZE(CAutomobile, 0x5A8);

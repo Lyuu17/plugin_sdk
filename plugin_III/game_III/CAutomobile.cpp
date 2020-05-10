@@ -195,3 +195,7 @@ void CAutomobile::VehicleDamage(float damageIntensity, unsigned short arg1) {
 void CAutomobile::dmgDrawCarCollidingParticles(CVector const& position, float force) {
     plugin::CallMethod<0x52F030, CAutomobile *, CVector const&, float>(this, position, force);
 }
+
+bool CAutomobile::SetUpWheelColModel(CColModel* wheelCol) {
+    return plugin::CallVirtualMethodAndReturn<bool, 30, CAutomobile*, CColModel*>(this, wheelCol);
+}
