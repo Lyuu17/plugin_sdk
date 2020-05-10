@@ -21,7 +21,19 @@ public:
     unsigned char m_nPieceTypeB;
     float m_fCollisionRadius;
 	
-	CColPoint& operator=(CColPoint const& right);
+	CColPoint& operator=(CColPoint const &right)
+    {
+        m_vecPoint = right.m_vecPoint;
+        field_C = right.field_C;
+        m_vecNormal = right.m_vecNormal;
+        field_1C = right.field_1C;
+        m_nSurfaceTypeA = right.m_nSurfaceTypeA;
+        m_nPieceTypeA = right.m_nPieceTypeA;
+        m_nSurfaceTypeB = right.m_nSurfaceTypeB;
+        m_nPieceTypeB = right.m_nPieceTypeB;
+        m_fCollisionRadius = right.m_fCollisionRadius;
+        return *this;
+    }
 };
 
 VALIDATE_SIZE(CColPoint, 0x28);
