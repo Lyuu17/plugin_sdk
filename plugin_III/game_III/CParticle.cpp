@@ -6,6 +6,14 @@
 */
 #include "CParticle.h"
 
+PLUGIN_SOURCE_FILE
+
+int ctor_addr(CParticle) = ADDRESS_BY_VERSION(0x50C410, 0x50C500, 0x50C490);
+int ctor_gaddr(CParticle) = GLOBAL_ADDRESS_BY_VERSION(0x50C410, 0x50C500, 0x50C490);
+
+int dtor_addr(CParticle) = ADDRESS_BY_VERSION(0x50C420, 0x50C510, 0x50C4A0);
+int dtor_gaddr(CParticle) = GLOBAL_ADDRESS_BY_VERSION(0x50C420, 0x50C510, 0x50C4A0);
+
 int addrof(CParticle::ReloadConfig) = ADDRESS_BY_VERSION(0x50C430, 0x50C520, 0x50C4B0);
 int gaddrof(CParticle::ReloadConfig) = GLOBAL_ADDRESS_BY_VERSION(0x50C430, 0x50C520, 0x50C4B0);
 
@@ -30,16 +38,20 @@ void CParticle::Shutdown() {
     plugin::CallDynGlobal(gaddrof(CParticle::Shutdown));
 }
 
+int addrof_o(CParticle::AddParticle, CParticle* (*)(tParticleType, CVector const&, CVector const&, CEntity*, float, int, int, int, int)) = ADDRESS_BY_VERSION(0x50D140, 0x50D330, 0x50D2C0);
+int gaddrof_o(CParticle::AddParticle, CParticle* (*)(tParticleType, CVector const&, CVector const&, CEntity*, float, int, int, int, int)) = GLOBAL_ADDRESS_BY_VERSION(0x50D140, 0x50D330, 0x50D2C0);
+
 // Converted from cdecl CParticle* CParticle::AddParticle(tParticleType type,CVector const&posn,CVector const&direction,CEntity *entity,float size,int rotationSpeed,int rotation,int currentFrame,int lifeSpan) 0x50D140
 CParticle* CParticle::AddParticle(tParticleType type, CVector const& posn, CVector const& direction, CEntity* entity, float size, int rotationSpeed, int rotation, int currentFrame, int lifeSpan) {
-    //return plugin::CallAndReturn<CParticle*, 0x0, tParticleType, CVector const&, CVector const&, CEntity*, float, int, int, int, int>(type, posn, direction, entity, size, rotationSpeed, rotation, currentFrame, lifeSpan);
-    return ((CParticle * (__cdecl*)(tParticleType, CVector const&, CVector const&, CEntity*, float, int, int, int, int))ADDRESS_BY_VERSION(0x50D140, 0x50D330, 0x50D2C0))(type, posn, direction, entity, size, rotationSpeed, rotation, currentFrame, lifeSpan);
+    return plugin::CallAndReturnDynGlobal<CParticle*, tParticleType, CVector const&, CVector const&, CEntity*, float, int, int, int, int>(gaddrof_o(CParticle::AddParticle, CParticle * (*)(tParticleType, CVector const&, CVector const&, CEntity*, float, int, int, int, int)), type, posn, direction, entity, size, rotationSpeed, rotationSpeed, rotation, rotation, currentFrame, lifeSpan);
 }
+
+int addrof_o(CParticle::AddParticle, CParticle* (*)(tParticleType, CVector const&, CVector const&, CEntity*, float, RwRGBA const&, int, int, int, int)) = ADDRESS_BY_VERSION(0x50D190, 0x50D380, 0x50D310);
+int gaddrof_o(CParticle::AddParticle, CParticle* (*)(tParticleType, CVector const&, CVector const&, CEntity*, float, RwRGBA const&, int, int, int, int)) = GLOBAL_ADDRESS_BY_VERSION(0x50D190, 0x50D380, 0x50D310);
 
 // Converted from cdecl CParticle* CParticle::AddParticle(tParticleType type,CVector const&posn,CVector const&direction,CEntity *entity,float,RwRGBA const&color,int rotationSpeed,int rotation,int currentFrame,int lifeSpan) 0x50D190
 CParticle* CParticle::AddParticle(tParticleType type, CVector const& posn, CVector const& direction, CEntity* entity, float size, RwRGBA const& color, int rotationSpeed, int rotation, int currentFrame, int lifeSpan) {
-    //return plugin::CallAndReturn<CParticle*, 0, tParticleType, CVector const&, CVector const&, CEntity*, float, RwRGBA const&, int, int, int, int>(type, posn, direction, entity, size, color, rotationSpeed, rotation, currentFrame, lifeSpan);
-    return ((CParticle * (__cdecl*)(tParticleType, CVector const&, CVector const&, CEntity*, float, RwRGBA const&, int, int, int, int))ADDRESS_BY_VERSION(0x50D190, 0x50D380, 0x50D310))(type, posn, direction, entity, size, color, rotationSpeed, rotation, currentFrame, lifeSpan);
+    return plugin::CallAndReturnDynGlobal<CParticle*, tParticleType, CVector const&, CVector const&, CEntity*, float, RwRGBA const&, int, int, int, int>(gaddrof_o(CParticle::AddParticle, CParticle * (*)(tParticleType, CVector const&, CVector const&, CEntity*, float, int, int, int, int)), type, posn, direction, entity, size, color, rotationSpeed, rotationSpeed, rotation, rotation, currentFrame, lifeSpan);
 }
 
 int addrof(CParticle::Update) = ADDRESS_BY_VERSION(0x50DCF0, 0x50DEE0, 0x50DE70);
@@ -74,12 +86,18 @@ void CParticle::RemoveParticle(CParticle* particle, CParticle* previousParticle,
     plugin::CallDynGlobal(gaddrof(CParticle::RemoveParticle), particle, previousParticle, particleSystem);
 }
 
+int addrof(CParticle::AddJetExplosion) = ADDRESS_BY_VERSION(0x50F760, 0x50F950, 0x50F8E0);
+int gaddrof(CParticle::AddJetExplosion) = GLOBAL_ADDRESS_BY_VERSION(0x50F760, 0x50F950, 0x50F8E0);
+
 // Converted from cdecl void CParticle::AddJetExplosion(CVector const& posn,float power,float size) 0x50F760
 void CParticle::AddJetExplosion(CVector const& posn, float power, float size) {
-    plugin::Call<0x50F760, CVector const&, float, float>(posn, power, size);
+    plugin::CallDynGlobal(gaddrof(CParticle::AddJetExplosion), posn, power, size);
 }
+
+int addrof(CParticle::AddYardieDoorSmoke) = ADDRESS_BY_VERSION(0x50FAA0, 0x50FC90, 0x50FC20);
+int gaddrof(CParticle::AddYardieDoorSmoke) = GLOBAL_ADDRESS_BY_VERSION(0x50FAA0, 0x50FC90, 0x50FC20);
 
 // Converted from cdecl void CParticle::AddYardieDoorSmoke(CVector const& posn,CMatrix const& matrix) 0x50FAA0
 void CParticle::AddYardieDoorSmoke(CVector const& posn, CMatrix const& matrix) {
-    plugin::Call<0x50FAA0, CVector const&, CMatrix const&>(posn, matrix);
+    plugin::CallDynGlobal(gaddrof(CParticle::AddYardieDoorSmoke), posn, matrix);
 }

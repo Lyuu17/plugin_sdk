@@ -15,6 +15,8 @@
 class CEntity;
 
 class PLUGIN_API CParticle {
+    PLUGIN_NO_DEFAULT_CONSTRUCTION(CParticle)
+
 public:
     CVector        m_vecPosition;
     CVector        m_vecDirection;
@@ -49,14 +51,16 @@ public:
     SUPPORTED_10EN_11EN_STEAM static void ReloadConfig();
     SUPPORTED_10EN_11EN_STEAM static void Initialise();
     SUPPORTED_10EN_11EN_STEAM static void Shutdown();
-    static CParticle* AddParticle(tParticleType type, CVector const& posn, CVector const& direction, CEntity* entity, float size, int rotationSpeed, int rotation, int currentFrame, int lifeSpan);
-    static CParticle* AddParticle(tParticleType type, CVector const& posn, CVector const& direction, CEntity* entity, float size, RwRGBA const& color, int rotationSpeed, int rotation, int currentFrame, int lifeSpan);
+    SUPPORTED_10EN_11EN_STEAM static CParticle* AddParticle(tParticleType type, CVector const& posn, CVector const& direction, CEntity* entity, float size, int rotationSpeed, int rotation, int currentFrame, int lifeSpan);
+    SUPPORTED_10EN_11EN_STEAM static CParticle* AddParticle(tParticleType type, CVector const& posn, CVector const& direction, CEntity* entity, float size, RwRGBA const& color, int rotationSpeed, int rotation, int currentFrame, int lifeSpan);
     SUPPORTED_10EN_11EN_STEAM static void Update();
     SUPPORTED_10EN_11EN_STEAM static void Render();
     SUPPORTED_10EN_11EN_STEAM static void RemovePSystem(tParticleType particleType);
     SUPPORTED_10EN_11EN_STEAM static void RemoveParticle(CParticle* particle, CParticle* previousParticle, tParticleSystemData* particleSystem);
-    static void AddJetExplosion(CVector const& posn, float power, float size);
-    static void AddYardieDoorSmoke(CVector const& posn, CMatrix const& matrix);
+    SUPPORTED_10EN_11EN_STEAM static void AddJetExplosion(CVector const& posn, float power, float size);
+    SUPPORTED_10EN_11EN_STEAM static void AddYardieDoorSmoke(CVector const& posn, CMatrix const& matrix);
 };
+
+VALIDATE_SIZE(CParticle, 0x68);
 
 #include "meta/meta.CParticle.h"
