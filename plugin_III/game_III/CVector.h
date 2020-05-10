@@ -34,6 +34,13 @@ public:
         this->z = a.x * b.y - b.x * a.y;
     }
 
+    float DotProduct(CVector const& ref)
+    {
+        return this->x * ref.x
+            + this->y * ref.y
+            + this->z * ref.z;
+    }
+
     inline float Magnitude() {
         return sqrtf(this->x * this->x + this->y * this->y + this->z * this->z);
     }
