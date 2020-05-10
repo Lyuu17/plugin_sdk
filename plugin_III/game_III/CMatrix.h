@@ -33,41 +33,39 @@ public:
     CMatrix(plugin::dummy_func_t) {}
 
     SUPPORTED_10EN_11EN_STEAM void Attach(RwMatrixTag* rwMatrix, bool deleteOnDetach);
-    void AttachRW(RwMatrixTag* rwMatrix, bool deleteOnDetach);
-    CMatrix(CMatrix const& src);
-    CMatrix(RwMatrixTag* rwMatrix, bool deleteOnDetach);
-    void CopyOnlyMatrix(CMatrix const& src);
-    void Detach();
-    void Reorthogonalise();
-    void SetOrientation(float x,float y,float z);
-    void ResetOrientation();
-    void Rotate(float x, float y, float z);
-    void RotateX(float angle);
-    void RotateZ(float angle);
-    void SetRotate(float x, float y, float z);
-    void SetRotateX(float angle);
-    void SetRotateXOnly(float angle);
-    void SetRotateY(float angle);
-    void SetRotateYOnly(float angle);
-    void SetRotateZ(float angle);
-    void SetRotateZOnly(float angle);
-    void SetScale(float factor);
-    void SetTranslate(float x, float y, float z);
-    void SetUnity();
-    void Update();
-    void UpdateRW();
-    void operator+=(CMatrix const& right);
-    void operator=(CMatrix const& right);
+    SUPPORTED_10EN_11EN_STEAM void AttachRW(RwMatrixTag* rwMatrix, bool deleteOnDetach);
+    SUPPORTED_10EN_11EN_STEAM CMatrix(CMatrix const& src);
+    SUPPORTED_10EN_11EN_STEAM CMatrix(RwMatrixTag* rwMatrix, bool deleteOnDetach);
+    SUPPORTED_10EN_11EN_STEAM void CopyOnlyMatrix(CMatrix const& src);
+    SUPPORTED_10EN_11EN_STEAM void Detach();
+    SUPPORTED_10EN_11EN_STEAM void Reorthogonalise();
+    SUPPORTED_10EN_11EN_STEAM void SetOrientation(float x,float y,float z);
+    SUPPORTED_10EN_11EN_STEAM void ResetOrientation();
+    SUPPORTED_10EN_11EN_STEAM void Rotate(float x, float y, float z);
+    SUPPORTED_10EN_11EN_STEAM void RotateX(float angle);
+    SUPPORTED_10EN_11EN_STEAM void RotateZ(float angle);
+    SUPPORTED_10EN_11EN_STEAM void SetRotate(float x, float y, float z);
+    SUPPORTED_10EN_11EN_STEAM void SetRotateX(float angle);
+    SUPPORTED_10EN_11EN_STEAM void SetRotateXOnly(float angle);
+    SUPPORTED_10EN_11EN_STEAM void SetRotateY(float angle);
+    SUPPORTED_10EN_11EN_STEAM void SetRotateYOnly(float angle);
+    SUPPORTED_10EN_11EN_STEAM void SetRotateZ(float angle);
+    SUPPORTED_10EN_11EN_STEAM void SetRotateZOnly(float angle);
+    SUPPORTED_10EN_11EN_STEAM void SetScale(float factor);
+    SUPPORTED_10EN_11EN_STEAM void SetTranslate(float x, float y, float z);
+    SUPPORTED_10EN_11EN_STEAM void SetUnity();
+    SUPPORTED_10EN_11EN_STEAM void Update();
+    SUPPORTED_10EN_11EN_STEAM void UpdateRW();
+    SUPPORTED_10EN_11EN_STEAM void operator+=(CMatrix const& right);
+    SUPPORTED_10EN_11EN_STEAM void operator=(CMatrix const& right);
     ~CMatrix();
 };
 
 VALIDATE_SIZE(CMatrix, 0x48);
 
-void Invert(CMatrix const& in, CMatrix&out);
+SUPPORTED_10EN_11EN_STEAM void Invert(CMatrix const& in, CMatrix&out);
 SUPPORTED_10EN_11EN_STEAM CMatrix Invert(CMatrix const& in);
-CMatrix operator*(CMatrix const& a, CMatrix const& b);
-CVector operator*(CMatrix const& m, CVector const& v);
-CVector Multiply3x3(CVector const& v, CMatrix const& m);
-CVector Multiply3x3(CMatrix const& m, CVector const& v);
-
-#include "meta/meta.CMatrix.h"
+SUPPORTED_10EN_11EN_STEAM CMatrix operator*(CMatrix const& a, CMatrix const& b);
+SUPPORTED_10EN_11EN_STEAM CVector operator*(CMatrix const& m, CVector const& v);
+SUPPORTED_10EN_11EN_STEAM CVector Multiply3x3(CVector const& v, CMatrix const& m);
+SUPPORTED_10EN_11EN_STEAM CVector Multiply3x3(CMatrix const& m, CVector const& v);
