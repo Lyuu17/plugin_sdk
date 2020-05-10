@@ -198,8 +198,10 @@ public:
     //short _padE9CE;
     unsigned int m_nFadeStartTime;
     unsigned int m_nTimeToWaitToFadeMusic;
-        
-        
+
+    //static
+    static bool& m_bUseMouse3rdPerson;
+
     //funcs
     float Find3rdPersonQuickAimPitch();
 };
