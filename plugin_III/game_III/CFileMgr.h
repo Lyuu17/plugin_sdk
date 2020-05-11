@@ -27,4 +27,5 @@ public:
     static bool ReadLine(FILESTREAM fileHandle, char* buffer, int maxSize);
     static int CloseFile(FILESTREAM fileHandle);
     static int GetErrorReadWrite(FILESTREAM fileHandle);
+    static char* LoadLine(FILESTREAM fileHandle);
 };

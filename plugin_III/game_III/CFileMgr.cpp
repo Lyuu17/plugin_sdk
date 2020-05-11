@@ -73,3 +73,7 @@ int CFileMgr::CloseFile(FILESTREAM fileHandle) {
 int CFileMgr::GetErrorReadWrite(FILESTREAM fileHandle) {
     return plugin::CallAndReturn<int, 0x479210, FILESTREAM>(fileHandle);
 }
+
+char* CFileMgr::LoadLine(FILESTREAM fileHandle) {
+    return plugin::CallAndReturn<char*, 0x4791D0, FILESTREAM>(fileHandle);
+}
