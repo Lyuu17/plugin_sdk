@@ -9,3 +9,7 @@
 float CVector::Normalise() {
     return ((float(__thiscall *)(CVector *))0x4BA560)(this);
 }
+
+float CVector::Normalise(CVector &vec) {
+    return ((float(__thiscall*)(CVector*))0x4BA560)(&vec);
+}

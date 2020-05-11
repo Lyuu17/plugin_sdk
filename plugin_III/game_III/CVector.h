@@ -34,6 +34,12 @@ public:
         this->z = a.x * b.y - b.x * a.y;
     }
 
+    static inline void Cross(CVector &cross, CVector& a, CVector& b) {
+        cross.x = b.z * a.y - a.z * b.y;
+        cross.y = a.z * b.x - a.x * b.z;
+        cross.z = a.x * b.y - b.x * a.y;
+    }
+
     float DotProduct(CVector const& ref)
     {
         return this->x * ref.x
@@ -88,6 +94,7 @@ public:
     }
 
     float Normalise();
+    static float Normalise(CVector &);
 
     inline RwV3d ToRwV3d() const {
         return{ x, y, z };
