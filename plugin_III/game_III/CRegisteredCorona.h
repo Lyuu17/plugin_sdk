@@ -12,43 +12,33 @@ Do not delete this comment block. Respect others' work!
 class CRegisteredCorona {
 public:
     int m_nUniqueID;
-    int field_4;
+    int m_nLastLOScheck;
     RwTexture *m_pTexture;
     RwRGBA m_Color;
     char m_nFadeState;
-    char _pad1[3];
     CVector m_vPosn;
     float m_fSize;
     float normalAngle;
-    char m_bRegisteredThisFrame;
-    char _pad2[3];
-    float farClip;
-    char flare;
-    char reflection;
-    char flags1;
-    char field_33;
-    float field_34;
-    float field_38;
-    float field_3C;
-    char field_40[12];
-    float field_4C;
-    float field_50;
-    float field_54;
-    char field_58[15];
-    char field_67;
-    char field_68;
-    char field_69;
-    char field_6A[3];
-    char field_6D;
-    char field_6E;
-    char field_6F;
-    char field_70[3];
-    char field_73;
-    char field_74;
-    char field_75;
-    char field_76[3];
-    char field_79;
-    char field_7A[6];
+    bool m_bRegisteredThisFrame;
+    float m_fDrawDist;
+    char m_nFlareType;
+    char m_nReflection;
+
+    unsigned char LOScheck : 1;
+    unsigned char offScreen : 1;
+    unsigned char firstUpdate : 1;
+    unsigned char drawStreak : 1;
+    unsigned char sightClear : 1;
+
+    bool renderReflection;
+    float heightAboveRoad;
+
+    float prevX[6];
+    float prevY[6];
+    unsigned char prevRed[6];
+    unsigned char prevGreen[6];
+    unsigned char prevBlue[6];
+    bool hasValue[6];
     
     //funcs
     void Update();
