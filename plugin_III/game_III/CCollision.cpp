@@ -6,6 +6,10 @@
 */
 #include "CCollision.h"
 
+PLUGIN_SOURCE_FILE
+
+PLUGIN_VARIABLE eLevelName &CCollision::ms_collisionInMemory = *reinterpret_cast<eLevelName*>(GLOBAL_ADDRESS_BY_VERSION(0x8F6250, 0x8F6408, 0x906548));;
+
 // Converted from cdecl eLevelName GetCollisionInSectorList(CPtrList &list) 0x40B4E0
 eLevelName GetCollisionInSectorList(CPtrList& list) {
     eLevelName result;

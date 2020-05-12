@@ -7,7 +7,7 @@
 #include "CWeather.h"
 
 float &CWeather::CloudCoverage = *(float *)0x8E2818;
-float &CWeather::Foggyness = *(float *)0x885AF4;
+float &CWeather::Foggyness = *(float *)ADDRESS_BY_VERSION(0x885AF4, 0x885AA4, 0x895BE4);
 short &CWeather::ForcedWeatherType = *(short *)0x95CC80;
 float &CWeather::InterpolationValue = *(float *)0x8F2520;
 bool  &CWeather::LightningBurst = *(bool *)0x95CDAC;

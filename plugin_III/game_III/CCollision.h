@@ -14,7 +14,10 @@
 #include "CSector.h"
 #include "CMatrix.h"
 
-class CCollision {
+class PLUGIN_API CCollision {
+public:
+    SUPPORTED_10EN_11EN_STEAM static eLevelName &ms_collisionInMemory;
+
 public:
     static void Init();
     static void Shutdown();

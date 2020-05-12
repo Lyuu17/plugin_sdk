@@ -8,7 +8,7 @@ Do not delete this comment block. Respect others' work!
 
 PLUGIN_SOURCE_FILE
 
-RwTexture **gpCoronaTexture = (RwTexture **)0x5FAF44;
+RwTexture **gpCoronaTexture = (RwTexture **)ADDRESS_BY_VERSION(0x5FAF44, 0x5FAD2C, 0x607D24);
 
 bool& CCoronas::SunBlockedByClouds = *(bool *)ADDRESS_BY_VERSION(0x95CD73, 0x95CF2B, 0x96D06B);
 int& CCoronas::bChangeBrightnessImmediately = *(int *)ADDRESS_BY_VERSION(0x8E2C30, 0x8E2CE4, 0x8F2E24);

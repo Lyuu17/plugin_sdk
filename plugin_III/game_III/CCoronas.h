@@ -40,6 +40,6 @@ public:
     SUPPORTED_10EN_11EN_STEAM static void UpdateCoronaCoors(unsigned int id, CVector const& posn, float farClip, float angle);
 };
 
-extern RwTexture **gpCoronaTexture;
+SUPPORTED_10EN_11EN_STEAM extern RwTexture **gpCoronaTexture;
 
 #include "meta/meta.CCoronas.h"
