@@ -10,7 +10,7 @@ Do not delete this comment block. Respect others' work!
 #include "eWeaponFire.h"
 #include "CVector.h"
 
-class CWeaponInfo {
+class PLUGIN_API CWeaponInfo {
 public:
     eWeaponFire m_eWeaponFire;
     float m_fRange;
@@ -73,3 +73,5 @@ public:
 VALIDATE_SIZE(CWeaponInfo, 0x54);
 
 extern CWeaponInfo(&aWeaponInfo)[14];
+
+#include "meta/meta.CWeaponInfo.h"
