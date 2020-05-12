@@ -20,36 +20,36 @@ Do not delete this comment block. Respect others' work!
 #include "CInstance.h"
 #include "CVehicle.h"
 
-class CModelInfo {
+class PLUGIN_API CModelInfo {
 public:
     // variables
-    static CBaseModelInfo **ms_modelInfoPtrs;
-    static XtraCompsModelStore* ms_xtraCompsModelStore; // [2]
-    static MloInstanceStore* ms_mloInstanceStore;       // [1]
-    static EffectStore* ms_2dEffectStore;               // [2000]
-    static ClumpModelStore* ms_clumpModelStore;         // [5]
-    static MloModelStore* ms_mloModelStore;             // [1]
-    static PedModelStore* ms_pedModelStore;             // [90]
-    static SimpleModelStore* ms_simpleModelStore;       // [5000]
-    static TimeModelStore* ms_timeModelStore;           // [30]
-    static VehicleModelStore* ms_vehicleModelStore;     // [120]
+    SUPPORTED_10EN_11EN_STEAM static CBaseModelInfo **ms_modelInfoPtrs;
+    SUPPORTED_10EN_11EN_STEAM static XtraCompsModelStore* ms_xtraCompsModelStore; // [2]
+    SUPPORTED_10EN_11EN_STEAM static MloInstanceStore* ms_mloInstanceStore;       // [1]
+    SUPPORTED_10EN_11EN_STEAM static EffectStore* ms_2dEffectStore;               // [2000]
+    SUPPORTED_10EN_11EN_STEAM static ClumpModelStore* ms_clumpModelStore;         // [5]
+    SUPPORTED_10EN_11EN_STEAM static MloModelStore* ms_mloModelStore;             // [1]
+    SUPPORTED_10EN_11EN_STEAM static PedModelStore* ms_pedModelStore;             // [90]
+    SUPPORTED_10EN_11EN_STEAM static SimpleModelStore* ms_simpleModelStore;       // [5000]
+    SUPPORTED_10EN_11EN_STEAM static TimeModelStore* ms_timeModelStore;           // [30]
+    SUPPORTED_10EN_11EN_STEAM static VehicleModelStore* ms_vehicleModelStore;     // [120]
 
     //funcs
-    static CClumpModelInfo* AddClumpModel(int index);
-    static CMloModelInfo* AddMloModel(int index);
-    static CPedModelInfo* AddPedModel(int index);
-    static CSimpleModelInfo* AddSimpleModel(int index);
-    static CTimeModelInfo* AddTimeModel(int index);
-    static CVehicleModelInfo* AddVehicleModel(int index);
-    static void ConstructMloClumps();
-    static EffectStore* Get2dEffectStore();
-    static MloInstanceStore* GetMloInstanceStore();
-    static CBaseModelInfo* GetModelInfo(char const* name, int* index);
-    static void Initialise();
-    static bool IsBoatModel(int index);
-    static void ReInit2dEffects();
-    static void RemoveColModelsFromOtherLevels(eLevelName levelName);
-    static void ShutDown();
+    SUPPORTED_10EN_11EN_STEAM static CClumpModelInfo* AddClumpModel(int index);
+    SUPPORTED_10EN_11EN_STEAM static CMloModelInfo* AddMloModel(int index);
+    SUPPORTED_10EN_11EN_STEAM static CPedModelInfo* AddPedModel(int index);
+    SUPPORTED_10EN_11EN_STEAM static CSimpleModelInfo* AddSimpleModel(int index);
+    SUPPORTED_10EN_11EN_STEAM static CTimeModelInfo* AddTimeModel(int index);
+    SUPPORTED_10EN_11EN_STEAM static CVehicleModelInfo* AddVehicleModel(int index);
+    SUPPORTED_10EN_11EN_STEAM static void ConstructMloClumps();
+    SUPPORTED_10EN_11EN_STEAM static EffectStore* Get2dEffectStore();
+    SUPPORTED_10EN_11EN_STEAM static MloInstanceStore* GetMloInstanceStore();
+    SUPPORTED_10EN_11EN_STEAM static CBaseModelInfo* GetModelInfo(char const* name, int* index);
+    SUPPORTED_10EN_11EN_STEAM static void Initialise();
+    SUPPORTED_10EN_11EN_STEAM static bool IsBoatModel(int index);
+    SUPPORTED_10EN_11EN_STEAM static void ReInit2dEffects();
+    SUPPORTED_10EN_11EN_STEAM static void RemoveColModelsFromOtherLevels(eLevelName levelName);
+    SUPPORTED_10EN_11EN_STEAM static void ShutDown();
 
     static inline CBaseModelInfo *GetModelInfo(int index) {
         return ms_modelInfoPtrs[index];
@@ -90,3 +90,5 @@ public:
         return result;
     }
 };
+
+#include "meta/meta.CModelInfo.h"
