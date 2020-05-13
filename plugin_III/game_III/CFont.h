@@ -12,7 +12,7 @@
 #include "CFontDetails.h"
 #include "CSprite2d.h"
 
-class CFont {
+class PLUGIN_API CFont {
 public:
     // variables
     static CFontDetails &Details;
@@ -21,71 +21,73 @@ public:
 
     // funcs
 
-    static void DrawFonts();
+    SUPPORTED_10EN_11EN static void DrawFonts();
     // get next ' ' character in a string
-    static wchar_t* GetNextSpace(const wchar_t* str);
-    static int GetNumberLines(float x, float y, const wchar_t* text);
-    static float GetStringWidth(const wchar_t* str, bool sentence);
-    static CRect* GetTextRect(CRect* rect_out, float x, float y, const wchar_t* text);
-    static void InitPerFrame();
+    SUPPORTED_10EN_11EN static wchar_t* GetNextSpace(const wchar_t* str);
+    SUPPORTED_10EN_11EN static int GetNumberLines(float x, float y, const wchar_t* text);
+    SUPPORTED_10EN_11EN static float GetStringWidth(const wchar_t* str, bool sentence);
+    SUPPORTED_10EN_11EN  static CRect* GetTextRect(CRect* rect_out, float x, float y, const wchar_t* text);
+    SUPPORTED_10EN_11EN static void InitPerFrame();
     // CFont initialisation
-    static void Initialise();
-    static wchar_t* ParseToken(wchar_t* str);
+    SUPPORTED_10EN_11EN static void Initialise();
+    SUPPORTED_10EN_11EN static wchar_t* ParseToken(wchar_t* str);
     // this adds a single character into rendering buffer
-    static void PrintChar(float x, float y, short character);
-    static void PrintString(float x, float y, const wchar_t* text);
-    static void PrintString(float x, float y, const wchar_t* start, const wchar_t* end, float arg4);
+    SUPPORTED_10EN_11EN static void PrintChar(float x, float y, short character);
+    SUPPORTED_10EN_11EN static void PrintString(float x, float y, const wchar_t* text);
+    SUPPORTED_10EN_11EN static void PrintString(float x, float y, const wchar_t* start, const wchar_t* end, float arg4);
     // like a 'global' font alpha, multiplied with each text alpha (from SetColor)
-    static void SetAlphaFade(float alpha);
-    static void SetBackGroundOnlyTextOff();
-    static void SetBackGroundOnlyTextOn();
+    SUPPORTED_10EN_11EN static void SetAlphaFade(float alpha);
+    SUPPORTED_10EN_11EN static void SetBackGroundOnlyTextOff();
+    SUPPORTED_10EN_11EN static void SetBackGroundOnlyTextOn();
     // sets background color
-    static void SetBackgroundColor(CRGBA color);
-    static void SetBackgroundOff();
-    static void SetBackgroundOn();
-    static void SetCentreOff();
-    static void SetCentreOn();
+    SUPPORTED_10EN_11EN static void SetBackgroundColor(CRGBA color);
+    SUPPORTED_10EN_11EN static void SetBackgroundOff();
+    SUPPORTED_10EN_11EN static void SetBackgroundOn();
+    SUPPORTED_10EN_11EN static void SetCentreOff();
+    SUPPORTED_10EN_11EN static void SetCentreOn();
     // set line width at center
-    static void SetCentreSize(float size);
+    SUPPORTED_10EN_11EN static void SetCentreSize(float size);
     // set text color
-    static void SetColor(CRGBA color);
+    SUPPORTED_10EN_11EN static void SetColor(CRGBA color);
     // drop color is used for text shadow and text outline
-    static void SetDropColor(CRGBA color);
+    SUPPORTED_10EN_11EN static void SetDropColor(CRGBA color);
     // set shadow size
-    static void SetDropShadowPosition(short value);
+    SUPPORTED_10EN_11EN static void SetDropShadowPosition(short value);
     // set text style
-    static void SetFontStyle(short style);
-    static void SetJustifyOff();
-    static void SetJustifyOn();
-    static void SetPropOff();
-    static void SetPropOn();
-    static void SetRightJustifyOff();
-    static void SetRightJustifyOn();
-    static void SetRightJustifyWrap(float value);
+    SUPPORTED_10EN_11EN static void SetFontStyle(short style);
+    SUPPORTED_10EN_11EN static void SetJustifyOff();
+    SUPPORTED_10EN_11EN static void SetJustifyOn();
+    SUPPORTED_10EN_11EN static void SetPropOff();
+    SUPPORTED_10EN_11EN static void SetPropOn();
+    SUPPORTED_10EN_11EN static void SetRightJustifyOff();
+    SUPPORTED_10EN_11EN static void SetRightJustifyOn();
+    SUPPORTED_10EN_11EN static void SetRightJustifyWrap(float value);
     // text scaling
-    static void SetScale(float width, float height);
+    SUPPORTED_10EN_11EN static void SetScale(float width, float height);
     // set text rotation angle
-    static void SetSlant(float value);
+    SUPPORTED_10EN_11EN static void SetSlant(float value);
     // set text rotation point
-    static void SetSlantRefPoint(float x, float y);
+    SUPPORTED_10EN_11EN static void SetSlantRefPoint(float x, float y);
     // set line width at right
-    static void SetWrapx(float value);
+    SUPPORTED_10EN_11EN static void SetWrapx(float value);
     // CFont closing
-    static void Shutdown();
-    static short character_code(unsigned char character);
+    SUPPORTED_10EN_11EN static void Shutdown();
+    SUPPORTED_10EN_11EN static short character_code(unsigned char character);
 
-    static char* GetNextSpace(const char* str);
-    static int GetNumberLines(float x, float y, const char* text);
-    static float GetStringWidth(const char* str, bool sentence);
-    static CRect* GetTextRect(CRect* rect_out, float x, float y, const char* text);
-    static char* ParseToken(char* str);
+    SUPPORTED_10EN_11EN static char* GetNextSpace(const char* str);
+    SUPPORTED_10EN_11EN static int GetNumberLines(float x, float y, const char* text);
+    SUPPORTED_10EN_11EN static float GetStringWidth(const char* str, bool sentence);
+    SUPPORTED_10EN_11EN static CRect* GetTextRect(CRect* rect_out, float x, float y, const char* text);
+    SUPPORTED_10EN_11EN static char* ParseToken(char* str);
     // this adds a single character into rendering buffer
-    static void PrintChar(float x, float y, char character);
-    static void PrintString(float x, float y, const char* text);
-    static void PrintString(float x, float y, const char* start, const char* end, float arg4);
+    SUPPORTED_10EN_11EN static void PrintChar(float x, float y, char character);
+    SUPPORTED_10EN_11EN static void PrintString(float x, float y, const char* text);
+    SUPPORTED_10EN_11EN static void PrintString(float x, float y, const char* start, const char* end, float arg4);
 };
 
-void AsciiToUnicode(char const* str_ascii, wchar_t* str_unicode);
-int UnicodeStrlen(wchar_t const* str);
-char* UnicodeToAscii(wchar_t* str_unicode);
+SUPPORTED_10EN_11EN void AsciiToUnicode(char const* str_ascii, wchar_t* str_unicode);
+SUPPORTED_10EN_11EN int UnicodeStrlen(wchar_t const* str);
+SUPPORTED_10EN_11EN char* UnicodeToAscii(wchar_t* str_unicode);
 extern char *aStr;
+
+#include "meta/meta.CFont.h"
