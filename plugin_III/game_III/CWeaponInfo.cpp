@@ -24,9 +24,7 @@ int gaddrof(CWeaponInfo::FindWeaponFireType) = GLOBAL_ADDRESS_BY_VERSION(0x5653E
 
 // Converted from cdecl eWeaponFire CWeaponInfo::FindWeaponFireType(char *name) 0x5653E0
 eWeaponFire CWeaponInfo::FindWeaponFireType(char* name) {
-    eWeaponFire result;
-    plugin::CallAndReturnDynGlobal<eWeaponFire, eWeaponFire*, char*>(gaddrof(CWeaponInfo::FindWeaponFireType), &result, name);
-    return result;
+    return plugin::CallAndReturnDynGlobal<eWeaponFire, char*>(gaddrof(CWeaponInfo::FindWeaponFireType), name);
 }
 
 int addrof(CWeaponInfo::FindWeaponType) = ADDRESS_BY_VERSION(0x5653B0, 0x5654F0, 0x5654A0);
@@ -34,9 +32,7 @@ int gaddrof(CWeaponInfo::FindWeaponType) = GLOBAL_ADDRESS_BY_VERSION(0x5653B0, 0
 
 // Converted from cdecl eWeaponType CWeaponInfo::FindWeaponType(char *name) 0x5653B0
 eWeaponType CWeaponInfo::FindWeaponType(char* name) {
-    eWeaponType result;
-    plugin::CallAndReturnDynGlobal<eWeaponType, eWeaponType*, char*>(gaddrof(CWeaponInfo::FindWeaponType), &result, name);
-    return result;
+    return plugin::CallAndReturnDynGlobal<eWeaponType, char*>(gaddrof(CWeaponInfo::FindWeaponType), name);
 }
 
 int addrof(CWeaponInfo::GetWeaponInfo) = ADDRESS_BY_VERSION(0x564FD0, 0x565110, 0x5650C0);

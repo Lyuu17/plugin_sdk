@@ -30,10 +30,10 @@ META_BEGIN(CWeaponInfo::FindWeaponFireType)
     static const int vtable_index = -1;
     using mv_addresses_t = MvAddresses<0x5653E0, 0x565110, 0x5654D0>;
     using refs_t = RefList<>;
-    using def_t = eWeaponFire(eWeaponFire*, char*);
+    using def_t = eWeaponFire(char*);
     static const int cb_priority = PRIORITY_BEFORE; 
     using calling_convention_t = CallingConventions::Cdecl;
-    using args_t = ArgPick<ArgTypes<eWeaponFire*, char*>, 0, 1>;
+    using args_t = ArgPick<ArgTypes<char*>, 0>;
 META_END
 
 META_BEGIN(CWeaponInfo::FindWeaponType)
@@ -47,7 +47,7 @@ META_BEGIN(CWeaponInfo::FindWeaponType)
     using def_t = eWeaponType(eWeaponType*, char*);
     static const int cb_priority = PRIORITY_BEFORE; 
     using calling_convention_t = CallingConventions::Cdecl;
-    using args_t = ArgPick<ArgTypes<eWeaponType*, char*>, 0, 1>;
+    using args_t = ArgPick<ArgTypes<char*>, 0>;
 META_END
 
 META_BEGIN(CWeaponInfo::GetWeaponInfo)
