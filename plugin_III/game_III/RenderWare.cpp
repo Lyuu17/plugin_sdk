@@ -7,9 +7,9 @@
 #include "PluginBase.h"
 #include "RenderWare.h"
 
-RwGlobals *&RwEngineInstance = *(RwGlobals **)0x661228;
+RwGlobals *&RwEngineInstance = *(RwGlobals **)ADDRESS_BY_VERSION(0x661228, 0x661228, 0);
 
-RsGlobalType &RsGlobal = *(RsGlobalType *)0x8F4360;
+RsGlobalType &RsGlobal = *(RsGlobalType *)ADDRESS_BY_VERSION(0x8F4360, 0x8F4414, 0);
 
 /* rwplcore.h */
 
