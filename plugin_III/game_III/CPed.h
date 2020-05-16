@@ -263,42 +263,41 @@ public:
     //vtable
     
     //funcs
-    CPed(unsigned int modelIndex);
+    SUPPORTED_10EN_11EN CPed(unsigned int modelIndex);
+    SUPPORTED_10EN_11EN ~CPed();
+
     SUPPORTED_10EN_11EN_STEAM bool IsPlayer();
     SUPPORTED_10EN_11EN_STEAM bool UseGroundColModel();
-    void SetAimFlag(CEntity* aimingTo);
-    void SetAimFlag(float heading);
-    void SetAttack(CEntity* entity);
-    void SetAttackTimer(unsigned int time);
-    void SetPointGunAt(CEntity* entity);
-    void ClearAimFlag();
-    void RestorePreviousState();
-    void ClearPointGunAt();
-    char ClearLookFlag();
-    void GiveWeapon(eWeaponType weaponType, unsigned int ammo);
-    void SetCurrentWeapon(int slot);
-    void SetObjective(eObjective objective);
-    void SetObjective(eObjective objective, CVector  const& arg1);
-    void SetObjective(eObjective objective, CVector arg1, float arg2);
-    void SetObjective(eObjective objective, short arg1, short arg2);
-    void SetObjective(eObjective objective, void* arg1);
-    void SetObjectiveTimer(unsigned int time);
-    void WarpPedIntoCar(CVehicle* vehicle);
-    void RemoveWeaponModel(int modelIndex);
-    void StopNonPartialAnims();
-
-    void operator delete(void* data);
-    void* operator new(unsigned int size);
-    void* operator new(unsigned int size, int arg1);
+    SUPPORTED_10EN_11EN void AddWeaponModel(int weaponID);
+    SUPPORTED_10EN_11EN void SetAimFlag(CEntity* aimingTo);
+    SUPPORTED_10EN_11EN void SetAimFlag(float heading);
+    SUPPORTED_10EN_11EN void SetAttack(CEntity* entity);
+    SUPPORTED_10EN_11EN void SetAttackTimer(unsigned int time);
+    SUPPORTED_10EN_11EN void SetPointGunAt(CEntity* entity);
+    SUPPORTED_10EN_11EN void ClearAimFlag();
+    SUPPORTED_10EN_11EN void RestorePreviousState();
+    SUPPORTED_10EN_11EN void ClearPointGunAt();
+    SUPPORTED_10EN_11EN char ClearLookFlag();
+    SUPPORTED_10EN_11EN void GiveWeapon(eWeaponType weaponType, unsigned int ammo);
+    SUPPORTED_10EN_11EN void SetCurrentWeapon(int slot);
+    SUPPORTED_10EN_11EN void SetObjective(eObjective objective);
+    SUPPORTED_10EN_11EN void SetObjective(eObjective objective, CVector  const& arg1);
+    SUPPORTED_10EN_11EN void SetObjective(eObjective objective, CVector arg1, float arg2);
+    SUPPORTED_10EN_11EN void SetObjective(eObjective objective, short arg1, short arg2);
+    SUPPORTED_10EN_11EN void SetObjective(eObjective objective, void* arg1);
+    SUPPORTED_10EN_11EN void SetObjectiveTimer(unsigned int time);
+    SUPPORTED_10EN_11EN void WarpPedIntoCar(CVehicle* vehicle);
+    SUPPORTED_10EN_11EN void RemoveWeaponModel(int modelIndex);
+    SUPPORTED_10EN_11EN void StopNonPartialAnims();
 };
 
 VALIDATE_SIZE(CPed, 0x53C);
 
-extern CVector *vecPedCarDoorAnimOffset;
-extern CVector *vecPedCarDoorLoAnimOffset;
-extern CVector *vecPedVanRearDoorAnimOffset;
-extern CVector *vecPedTrainDoorAnimOffset;
-extern CVector *vecPedDraggedOutCarAnimOffset;
-extern CVector *vecPedQuickDraggedOutCarAnimOffset;
+PLUGIN_VARIABLE extern CVector *vecPedCarDoorAnimOffset;
+PLUGIN_VARIABLE extern CVector *vecPedCarDoorLoAnimOffset;
+PLUGIN_VARIABLE extern CVector *vecPedVanRearDoorAnimOffset;
+PLUGIN_VARIABLE extern CVector *vecPedTrainDoorAnimOffset;
+PLUGIN_VARIABLE extern CVector *vecPedDraggedOutCarAnimOffset;
+PLUGIN_VARIABLE extern CVector *vecPedQuickDraggedOutCarAnimOffset;
 
 #include "meta/meta.CPed.h"
